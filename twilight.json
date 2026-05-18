@@ -1,69 +1,70 @@
 {
   "name": "OUDSUDWAN",
-  "description": "Luxury Vietnamese Oud Store - سدوان للعود",
+  "description": "Luxury Vietnamese Oud Store",
   "version": "1.0.0",
   "author": "OUDSUDWAN",
   "theme_id": 1018760024,
   "features": [
+    "slider",
+    "category",
+    "products",
+    "brand",
+    "newsletter"
+  ],
+  "components": [
     {
-      "id": "slider",
       "name": "Hero Slider",
-      "component": "components/hero-slider.twig"
+      "path": "components/hero-slider"
     },
     {
-      "id": "category",
       "name": "Categories",
-      "component": "components/categories.twig"
+      "path": "components/categories"
     },
     {
-      "id": "products",
       "name": "Featured Products",
-      "component": "components/featured-products.twig"
+      "path": "components/featured-products"
     },
     {
-      "id": "brand",
       "name": "Brand Story",
-      "component": "components/brand-story.twig"
+      "path": "components/brand-story"
     },
     {
-      "id": "testimonials",
-      "name": "Testimonials",
-      "component": "components/testimonials.twig"
-    },
-    {
-      "id": "newsletter",
       "name": "Newsletter",
-      "component": "components/newsletter.twig"
+      "path": "components/newsletter"
     },
     {
-      "id": "whatsapp_banner",
-      "name": "WhatsApp CTA",
-      "component": "components/whatsapp-banner.twig"
+      "name": "WhatsApp Banner",
+      "path": "components/whatsapp-banner"
     },
     {
-      "id": "announcement",
-      "name": "Announcement Bar",
-      "component": "components/announcement-bar.twig"
+      "name": "Testimonials",
+      "path": "components/testimonials"
     }
   ],
-  "settings": [
-    {
-      "id": "whatsapp_number",
+  "settings": {
+    "whatsapp_number": {
       "type": "text",
-      "label": "WhatsApp Number",
+      "label": {
+        "ar": "رقم الواتساب",
+        "en": "WhatsApp Number"
+      },
       "default": "966XXXXXXXXX"
     },
-    {
-      "id": "announcement_text",
-      "type": "text",
-      "label": "Announcement Bar Text",
-      "default": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
-    },
-    {
-      "id": "show_announcement",
+    "show_announcement": {
       "type": "toggle",
-      "label": "Show Announcement Bar",
+      "label": {
+        "ar": "إظهار شريط الإعلانات",
+        "en": "Show Announcement Bar"
+      },
       "default": true
+    },
+    "announcement_text": {
+      "type": "text",
+      "label": {
+        "ar": "نص الإعلان",
+        "en": "Announcement Text"
+      },
+      "default": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
     }
-  ]
+  }
 }
