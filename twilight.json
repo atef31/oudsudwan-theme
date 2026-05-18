@@ -5,104 +5,121 @@
   "author": "OUDSUDWAN",
   "author_email": "atefma65@gmail.com",
   "support_url": "https://wa.me/966XXXXXXXXX",
-  "documentation_url": "",
   "theme_color": "#000000",
-  "screenshots": [],
-  "settings": {
-    "logo": {
+  "settings": [
+    {
+      "id": "logo",
       "type": "image",
-      "label": "الشعار / Logo",
+      "label": "Logo",
       "default": ""
     },
-    "logo_white": {
+    {
+      "id": "logo_white",
       "type": "image",
-      "label": "الشعار الأبيض / White Logo",
+      "label": "White Logo",
       "default": ""
     },
-    "favicon": {
+    {
+      "id": "favicon",
       "type": "image",
       "label": "Favicon",
       "default": ""
     },
-    "whatsapp_number": {
+    {
+      "id": "whatsapp_number",
       "type": "text",
       "label": "WhatsApp Number",
       "default": "966XXXXXXXXX"
     },
-    "announcement_text_ar": {
+    {
+      "id": "show_announcement_bar",
+      "type": "checkbox",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "id": "announcement_text_ar",
       "type": "text",
-      "label": "Announcement Bar (Arabic)",
+      "label": "Announcement Bar Text (Arabic)",
       "default": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
     },
-    "announcement_text_en": {
+    {
+      "id": "announcement_text_en",
       "type": "text",
-      "label": "Announcement Bar (English)",
-      "default": "Free shipping on orders over 300 SAR | شحن مجاني للطلبات فوق 300 ريال"
+      "label": "Announcement Bar Text (English)",
+      "default": "Free shipping on orders over 300 SAR"
     },
-    "hero_slide_1_title_ar": {
+    {
+      "id": "hero_slide_1_title_ar",
       "type": "text",
-      "label": "Hero Slide 1 — Arabic Title",
+      "label": "Hero Slide 1 - Arabic Title",
       "default": "عود فيتنامي أصيل"
     },
-    "hero_slide_1_subtitle_en": {
+    {
+      "id": "hero_slide_1_subtitle_en",
       "type": "text",
-      "label": "Hero Slide 1 — English Subtitle",
+      "label": "Hero Slide 1 - English Subtitle",
       "default": "Authentic Vietnamese Oud"
     },
-    "hero_slide_1_image": {
+    {
+      "id": "hero_slide_1_image",
       "type": "image",
-      "label": "Hero Slide 1 — Image",
+      "label": "Hero Slide 1 - Image",
       "default": ""
     },
-    "hero_slide_2_title_ar": {
+    {
+      "id": "hero_slide_2_title_ar",
       "type": "text",
-      "label": "Hero Slide 2 — Arabic Title",
+      "label": "Hero Slide 2 - Arabic Title",
       "default": "زيوت العود الفاخرة"
     },
-    "hero_slide_2_subtitle_en": {
+    {
+      "id": "hero_slide_2_subtitle_en",
       "type": "text",
-      "label": "Hero Slide 2 — English Subtitle",
+      "label": "Hero Slide 2 - English Subtitle",
       "default": "Premium Oud Oils Collection"
     },
-    "hero_slide_2_image": {
+    {
+      "id": "hero_slide_2_image",
       "type": "image",
-      "label": "Hero Slide 2 — Image",
+      "label": "Hero Slide 2 - Image",
       "default": ""
     },
-    "hero_slide_3_title_ar": {
+    {
+      "id": "hero_slide_3_title_ar",
       "type": "text",
-      "label": "Hero Slide 3 — Arabic Title",
+      "label": "Hero Slide 3 - Arabic Title",
       "default": "مجموعات الهدايا الملكية"
     },
-    "hero_slide_3_subtitle_en": {
+    {
+      "id": "hero_slide_3_subtitle_en",
       "type": "text",
-      "label": "Hero Slide 3 — English Subtitle",
+      "label": "Hero Slide 3 - English Subtitle",
       "default": "Royal Gift Collections"
     },
-    "hero_slide_3_image": {
+    {
+      "id": "hero_slide_3_image",
       "type": "image",
-      "label": "Hero Slide 3 — Image",
+      "label": "Hero Slide 3 - Image",
       "default": ""
     },
-    "about_image": {
+    {
+      "id": "about_image",
       "type": "image",
       "label": "Brand Story Image",
       "default": ""
     },
-    "featured_product_banner_image": {
+    {
+      "id": "featured_product_banner_image",
       "type": "image",
       "label": "Featured Product Banner Image",
       "default": ""
     },
-    "featured_product_banner_id": {
+    {
+      "id": "featured_product_banner_id",
       "type": "text",
-      "label": "Featured Product Banner — Product ID",
+      "label": "Featured Product Banner - Product ID",
       "default": ""
-    },
-    "show_announcement_bar": {
-      "type": "checkbox",
-      "label": "Show Announcement Bar",
-      "default": true
     }
-  }
+  ]
 }
