@@ -1,0 +1,103 @@
+{% extends 'layouts/master.twig' %}
+
+{% block title %}{{ 'قصتنا' | trans }} | {{ store.name }}{% endblock %}
+{% block description %}{{ 'تعرف على قصة سدوان للعود ورحلتنا في إحضار أجود عود فيتنامي إلى منازلكم.' | trans }}{% endblock %}
+
+{% block content %}
+
+{# Hero #}
+<section class="relative py-24 bg-black overflow-hidden">
+  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 30px 30px;"></div>
+  <div class="relative z-10 max-w-screen-xl2 mx-auto px-4 lg:px-8 text-center">
+    <p class="font-cormorant text-gold/70 text-sm tracking-[0.4em] uppercase mb-4">Our Story</p>
+    <h1 class="font-tajawal font-black text-white mb-4" style="font-size: clamp(2.5rem, 5vw, 4rem);">{{ 'قصتنا' | trans }}</h1>
+    <div class="w-20 h-0.5 bg-gold mx-auto mb-6"></div>
+    <p class="text-ivory/60 text-base max-w-xl mx-auto font-cormorant italic text-xl">
+      "Luxury Vietnamese oud — crafted for those who appreciate true elegance."
+    </p>
+  </div>
+</section>
+
+{# Story section #}
+<section class="py-16 lg:py-24 bg-brand-gray">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+      <div class="relative">
+        {% if settings.about_image %}
+          <img src="{{ settings.about_image }}" alt="{{ 'سدوان للعود' | trans }}" class="w-full rounded-xl object-cover aspect-[4/5]" />
+        {% else %}
+          <div class="w-full rounded-xl bg-gradient-to-br from-dark-brown to-black aspect-[4/5] flex items-center justify-center">
+            <p class="text-gold/30 font-cormorant text-xl">Brand Image</p>
+          </div>
+        {% endif %}
+        <div class="absolute -bottom-5 -end-5 w-28 h-28 border-2 border-gold/20 rounded-xl -z-10 hidden lg:block"></div>
+      </div>
+      <div>
+        <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-3">{{ 'البداية' | trans }}</p>
+        <h2 class="font-tajawal font-black text-white text-section mb-5">{{ 'من غابات فيتنام إلى منازلكم' | trans }}</h2>
+        <div class="w-12 h-0.5 bg-gold mb-6"></div>
+        <div class="space-y-4 text-ivory/70 text-sm lg:text-base leading-relaxed">
+          <p>{{ 'بدأت قصة سدوان للعود بشغف حقيقي بعالم العطور الشرقية. منذ أكثر من عشر سنوات، انطلقت رحلتنا إلى أعماق غابات فيتنام، حيث تنمو شجرة العود في مناخها الطبيعي المثالي، لتنتج أجود أنواع الأخشاب العطرية في العالم.' | trans }}</p>
+          <p>{{ 'اخترنا من بين آلاف الأشجار ما يستحق أن يصل إلى بيوتكم — عوداً ذا رائحة عميقة وأصيلة، تحكي قصة أرض غنية وزمن طويل من النضج الطبيعي.' | trans }}</p>
+          <p>{{ 'اليوم، نفتخر بأن سدوان للعود أصبحت وجهة الخبراء ومحبي العطور في المملكة العربية السعودية والخليج، لأننا نقدم لكم الجودة الحقيقية بلا مساومة.' | trans }}</p>
+        </div>
+      </div>
+    </div>
+
+    {# Values #}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+      {% for value in [
+        { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title: 'الجودة أولاً', desc: 'نختار كل منتج بعناية شديدة لضمان أعلى مستويات الجودة والأصالة.' },
+        { icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z', title: 'الشغف الحقيقي', desc: 'شغفنا بالعود هو ما يدفعنا لنقديم الأفضل دائماً، ليس التجارة وحدها.' },
+        { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', title: 'خدمة شخصية', desc: 'فريقنا من الخبراء جاهز لمساعدتك في اختيار العطر المثالي لك.' }
+      ] %}
+        <div class="bg-black border border-gold/15 rounded-xl p-7 text-center">
+          <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/25 flex items-center justify-center mx-auto mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ value.icon }}"/>
+            </svg>
+          </div>
+          <h3 class="font-tajawal font-bold text-white text-base mb-3">{{ value.title | trans }}</h3>
+          <p class="text-ivory/60 text-sm leading-relaxed">{{ value.desc | trans }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {# Stats #}
+    <div class="bg-dark-brown rounded-2xl p-8 lg:p-12 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 24px 24px;"></div>
+      <div class="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        {% for stat in [
+          { num: '10+', label: 'سنوات من الخبرة' },
+          { num: '50+', label: 'منتج فاخر' },
+          { num: '10,000+', label: 'عميل سعيد' },
+          { num: '100%', label: 'طبيعي وأصيل' }
+        ] %}
+          <div>
+            <p class="font-tajawal font-black text-gold text-3xl lg:text-4xl mb-2">{{ stat.num }}</p>
+            <p class="text-ivory/60 text-sm">{{ stat.label | trans }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# CTA #}
+<section class="py-16 bg-black text-center">
+  <div class="max-w-xl mx-auto px-4">
+    <h2 class="font-tajawal font-black text-white text-2xl lg:text-3xl mb-4">{{ 'ابدأ رحلتك مع العود الأصيل' | trans }}</h2>
+    <p class="text-ivory/60 text-sm mb-8">{{ 'اكتشف مجموعتنا الفاخرة أو تواصل مع خبرائنا للحصول على توصية شخصية.' | trans }}</p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="{{ store.url }}/categories" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-black font-tajawal font-bold px-7 py-3.5 rounded transition-all duration-300">
+        {{ 'تسوق الآن' | trans }}
+      </a>
+      <a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 border border-gold/40 text-gold hover:bg-gold/10 px-7 py-3.5 rounded transition-all duration-300 font-medium">
+        {{ 'تواصل معنا' | trans }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

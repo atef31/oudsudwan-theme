@@ -1,0 +1,158 @@
+<section id="hero-slider" class="relative w-full overflow-hidden bg-black" style="height: clamp(500px, 90vh, 900px);">
+
+  {# Slides container #}
+  <div id="slides" class="flex h-full transition-transform duration-700 ease-in-out">
+
+    {% set slides = [
+      {
+        image: settings.hero_slide_1_image,
+        title_ar: settings.hero_slide_1_title_ar|default('عود فيتنامي أصيل'),
+        subtitle_en: settings.hero_slide_1_subtitle_en|default('Authentic Vietnamese Oud'),
+        desc_ar: 'اكتشف مجموعتنا الفاخرة من زيوت العود المُستخرجة بعناية من أجود أخشاب فيتنام',
+        cta_label: 'استكشف المجموعة',
+        cta_href: store.url ~ '/categories/oud-oil'
+      },
+      {
+        image: settings.hero_slide_2_image,
+        title_ar: settings.hero_slide_2_title_ar|default('زيوت العود الفاخرة'),
+        subtitle_en: settings.hero_slide_2_subtitle_en|default('Premium Oud Oils Collection'),
+        desc_ar: 'روائح ملكية تمزج الأصالة الشرقية بأرقى معايير الجودة العالمية',
+        cta_label: 'تسوق الآن',
+        cta_href: store.url ~ '/categories/oud-oil'
+      },
+      {
+        image: settings.hero_slide_3_image,
+        title_ar: settings.hero_slide_3_title_ar|default('مجموعات الهدايا الملكية'),
+        subtitle_en: settings.hero_slide_3_subtitle_en|default('Royal Gift Collections'),
+        desc_ar: 'هدايا فاخرة تليق بأرقى المناسبات — معبأة بحب واعتناء استثنائي',
+        cta_label: 'اكتشف الهدايا',
+        cta_href: store.url ~ '/categories/gift-sets'
+      }
+    ] %}
+
+    {% for i, slide in slides %}
+      <div class="slide w-full h-full shrink-0 relative" data-index="{{ i }}">
+        {# Background image #}
+        {% if slide.image %}
+          <img src="{{ slide.image }}" alt="{{ slide.title_ar }}"
+               class="absolute inset-0 w-full h-full object-cover object-center" />
+        {% else %}
+          {# Fallback gradient when no image is set #}
+          <div class="absolute inset-0 bg-gradient-to-br from-dark-brown via-black to-brand-gray"></div>
+          {# Decorative pattern #}
+          <div class="absolute inset-0 opacity-10"
+               style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 40px 40px;"></div>
+        {% endif %}
+
+        {# Overlay — RTL: dark on right, LTR: dark on left #}
+        <div class="absolute inset-0 bg-hero-overlay {{ store.direction == 'ltr' ? 'scale-x-[-1]' : '' }}"></div>
+
+        {# Decorative gold line #}
+        <div class="absolute bottom-0 start-0 end-0 h-0.5 bg-gradient-to-r from-gold via-gold-light to-transparent opacity-60"></div>
+
+        {# Slide content #}
+        <div class="relative z-10 h-full max-w-screen-xl2 mx-auto px-6 lg:px-16 flex items-center">
+          <div class="max-w-xl animate-slide-up">
+
+            {# English eyebrow #}
+            <p class="font-cormorant text-gold/80 text-sm lg:text-base tracking-[0.3em] uppercase mb-4 animate-fade-in">
+              {{ slide.subtitle_en }}
+            </p>
+
+            {# Gold divider #}
+            <div class="w-12 h-px bg-gold mb-6"></div>
+
+            {# Arabic heading #}
+            <h2 class="font-tajawal font-black text-white mb-4 leading-tight"
+                style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
+              {{ slide.title_ar }}
+            </h2>
+
+            {# Description #}
+            <p class="font-tajawal text-ivory/70 text-sm lg:text-base leading-relaxed mb-8 max-w-md">
+              {{ slide.desc_ar }}
+            </p>
+
+            {# CTAs #}
+            <div class="flex items-center gap-4 flex-wrap">
+              <a href="{{ slide.cta_href }}"
+                class="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-black font-tajawal font-bold px-7 py-3.5 rounded transition-all duration-300 shadow-gold hover:shadow-gold-lg hover:-translate-y-0.5">
+                {{ slide.cta_label | trans }}
+                <svg class="w-4 h-4 {{ store.direction == 'rtl' ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+              <a href="{{ store.url }}/categories"
+                class="inline-flex items-center gap-2 border border-gold/50 hover:border-gold text-ivory hover:text-gold font-tajawal font-medium px-6 py-3.5 rounded transition-all duration-300">
+                {{ 'كل المنتجات' | trans }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {# Navigation arrows #}
+  <button id="hero-prev" aria-label="{{ 'السابق' | trans }}"
+    class="absolute start-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-gold/30 text-ivory/80 hover:bg-gold hover:text-black hover:border-gold transition-all duration-200 flex items-center justify-center">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+  <button id="hero-next" aria-label="{{ 'التالي' | trans }}"
+    class="absolute end-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-gold/30 text-ivory/80 hover:bg-gold hover:text-black hover:border-gold transition-all duration-200 flex items-center justify-center">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  {# Dot indicators #}
+  <div class="absolute bottom-8 start-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+    {% for i in 0..2 %}
+      <button class="hero-dot w-2.5 h-2.5 rounded-full border border-gold/50 transition-all duration-300 {{ i == 0 ? 'bg-gold scale-125' : 'bg-transparent' }}"
+              data-index="{{ i }}" aria-label="{{ 'انتقل للشريحة ' ~ (i+1) }}"></button>
+    {% endfor %}
+  </div>
+
+  {# Slide counter #}
+  <div class="absolute bottom-8 end-8 z-20 flex items-center gap-1 font-cormorant text-gold/60 text-sm">
+    <span id="hero-current">01</span>
+    <span class="text-gold/30 mx-1">/</span>
+    <span>03</span>
+  </div>
+</section>
+
+<script>
+(function () {
+  const slides = document.querySelectorAll('#hero-slider .slide');
+  const dots   = document.querySelectorAll('.hero-dot');
+  const counter = document.getElementById('hero-current');
+  const track  = document.getElementById('slides');
+  let current  = 0;
+  let timer;
+
+  function goTo(idx) {
+    current = (idx + slides.length) % slides.length;
+    track.style.transform = `translateX(${document.dir === 'rtl' ? '' : '-'}${current * 100}%)`;
+    dots.forEach((d, i) => {
+      d.classList.toggle('bg-gold', i === current);
+      d.classList.toggle('scale-125', i === current);
+      d.classList.toggle('bg-transparent', i !== current);
+    });
+    if (counter) counter.textContent = String(current + 1).padStart(2, '0');
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function startTimer() { timer = setInterval(next, 5000); }
+  function resetTimer()  { clearInterval(timer); startTimer(); }
+
+  document.getElementById('hero-next').addEventListener('click', () => { next(); resetTimer(); });
+  document.getElementById('hero-prev').addEventListener('click', () => { prev(); resetTimer(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); resetTimer(); }));
+
+  startTimer();
+})();
+</script>

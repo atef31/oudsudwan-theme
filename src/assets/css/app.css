@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ── */
+@layer base {
+  :root {
+    --gold: #C9A24A;
+    --gold-light: #E2C47A;
+    --gold-dark: #A6842E;
+    --dark-brown: #3A2E25;
+    --ivory: #F5F1E8;
+    --brand-black: #000000;
+    --brand-gray: #1A1A1A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--brand-black);
+    color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* RTL base tweaks */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="ltr"] {
+    text-align: left;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* Remove default list styles for nav lists */
+  nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
+
+  /* Smooth scroll offset for sticky header */
+  [id] { scroll-margin-top: 5rem; }
+
+  /* Focus visible ring */
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #111; }
+  ::-webkit-scrollbar-thumb { background: #C9A24A44; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C9A24A88; }
+
+  /* Selection color */
+  ::selection { background: #C9A24A33; color: #C9A24A; }
+}
+
+/* ── Components ── */
+@layer components {
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #C9A24A 0%, #E2C47A 50%, #C9A24A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Gold shimmer effect */
+  .gold-shimmer {
+    background: linear-gradient(90deg, #C9A24A 0%, #E2C47A 50%, #C9A24A 100%);
+    background-size: 200% auto;
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  /* Section divider line */
+  .section-divider {
+    @apply w-16 h-0.5 bg-gold;
+  }
+
+  /* Luxury card */
+  .luxury-card {
+    @apply bg-brand-gray border border-white/8 rounded-xl
+           hover:border-gold/30 transition-all duration-400
+           shadow-card hover:shadow-card-hover;
+  }
+
+  /* Gold button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           bg-gold hover:bg-gold-light text-black
+           font-tajawal font-bold px-7 py-3.5 rounded
+           transition-all duration-300 shadow-gold hover:shadow-gold-lg
+           hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  /* Outline gold button */
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-gold/50 hover:border-gold
+           text-gold hover:bg-gold/10
+           font-tajawal font-medium px-7 py-3.5 rounded
+           transition-all duration-300 cursor-pointer;
+  }
+
+  /* Product card hover effects */
+  .product-card:hover .product-image {
+    transform: scale(1.08);
+  }
+
+  /* Announcement bar */
+  #announcement-bar {
+    position: relative;
+    z-index: 100;
+  }
+
+  /* Sticky header shadow on scroll */
+  #site-header.scrolled {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  }
+  #site-header.scrolled > div:first-child {
+    border-bottom-color: rgba(201,162,74,0.25);
+  }
+
+  /* Top bar hides on scroll */
+  #top-bar {
+    max-height: 40px;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  /* Mobile menu open state */
+  body.menu-open { overflow: hidden; }
+
+  /* Mobile menu positioned below header */
+  #mobile-menu {
+    top: var(--header-height, 72px);
+  }
+
+  /* Search bar */
+  #search-bar { transition: none; }
+
+  /* Back to top visible state */
+  #back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Prose overrides for product description */
+  .prose h1, .prose h2, .prose h3 { color: white; font-family: 'Tajawal', sans-serif; }
+  .prose a { color: var(--gold); }
+  .prose strong { color: var(--ivory); }
+
+  /* Salla component overrides */
+  salla-add-product-button::part(button) {
+    background-color: var(--gold);
+    color: #000;
+    border-radius: 0.375rem;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    border: none;
+    padding: 0.625rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: background-color 0.2s ease;
+  }
+
+  salla-add-product-button::part(button):hover {
+    background-color: var(--gold-light);
+  }
+
+  salla-localization-switcher {
+    --salla-switcher-color: rgba(245, 241, 232, 0.7);
+    --salla-switcher-hover-color: var(--gold);
+  }
+}
+
+/* ── Utilities ── */
+@layer utilities {
+  .text-section {
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    line-height: 1.25;
+  }
+
+  /* RTL-aware transforms */
+  [dir="rtl"] .rtl\:rotate-180 { transform: rotate(180deg); }
+
+  /* Line clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(var(--brand-gray), var(--brand-gray)) padding-box,
+                linear-gradient(135deg, var(--gold), transparent) border-box;
+    border: 1px solid transparent;
+  }
+
+  /* Glass morphism card */
+  .glass {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 162, 74, 0.15);
+  }
+
+  /* Fade in on scroll (used with IntersectionObserver) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── RTL slider fix ── */
+[dir="rtl"] #slides {
+  direction: ltr; /* flex direction stays ltr for JS transform */
+}
+
+/* ── Print ── */
+@media print {
+  #site-header, #announcement-bar, .floating-btn, #back-to-top { display: none !important; }
+}

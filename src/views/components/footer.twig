@@ -1,0 +1,146 @@
+<footer class="bg-brand-gray border-t border-gold/15 pt-16 pb-8">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
+
+    {# 4-column grid #}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
+
+      {# Column 1 — Brand #}
+      <div class="lg:col-span-1">
+        <a href="{{ store.url }}" class="inline-block mb-5">
+          {% if settings.logo_white %}
+            <img src="{{ settings.logo_white }}" alt="{{ store.name }}" class="h-12 w-auto" />
+          {% else %}
+            <div class="flex flex-col leading-none">
+              <span class="font-cormorant font-semibold text-gold text-2xl tracking-widest uppercase">OUDSUDWAN</span>
+              <span class="font-tajawal text-ivory/60 text-xs tracking-wide mt-0.5">سدوان للعود</span>
+            </div>
+          {% endif %}
+        </a>
+        <p class="text-ivory/60 text-sm leading-relaxed mb-5">
+          {{ 'عود فيتنامي فاخر — زيوت وشرائح وبخور ومنتجات العود، مُصنَّعة لمن يُقدِّر الأناقة الحقيقية.' | trans }}
+        </p>
+        <div class="flex items-center gap-3">
+          {% set socials = [
+            { name: 'Instagram', icon: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z', href: store.social.instagram|default('#') },
+            { name: 'Twitter/X', icon: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.776-8.906L1.645 2.25h6.921l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z', href: store.social.twitter|default('#') },
+            { name: 'TikTok', icon: 'M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 14.21 4 16 4v2c-1.986 0-3.86-.7-5-1.98V11c0 2.761-2.239 5-5 5S1 13.761 1 11s2.239-5 5-5v2c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3V0z', href: '#' },
+            { name: 'Snapchat', icon: 'M12.24 2c-.24 0-.48.01-.72.04-4.92.42-7.54 5.05-5.64 9.06L2.52 12c-.36.12-.36.6 0 .72l1.2.42a4.19 4.19 0 001.56 3.6c-.84.36-1.68.72-2.52 1.2-.36.24-.36.72 0 .96C3.84 19.56 5.52 20 7.44 20c.12 0 .24 0 .36-.01.48.61 1.44 1.01 2.52 1.01.6 0 1.08-.12 1.56-.36.18.12.36.24.6.36.6.24 1.2.36 1.8.36.84 0 1.56-.24 2.04-.61.12.01.24.01.36.01 1.92 0 3.6-.44 4.68-1.1.36-.24.36-.72 0-.96-.84-.48-1.68-.84-2.52-1.2a4.2 4.2 0 001.56-3.6l1.2-.42c.36-.12.36-.6 0-.72l-3.36-.9c1.9-4.01-.72-8.64-5.76-9.06-.24-.03-.48-.04-.72-.04z', href: '#' }
+          ] %}
+          {% for s in socials %}
+            <a href="{{ s.href }}" aria-label="{{ s.name }}" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center text-ivory/60 hover:text-gold hover:border-gold transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="{{ s.icon }}"/></svg>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      {# Column 2 — Collection #}
+      <div>
+        <h3 class="text-gold font-tajawal font-semibold text-base mb-5 tracking-wide uppercase after:block after:w-8 after:h-0.5 after:bg-gold after:mt-2">
+          {{ 'المجموعة' | trans }}
+        </h3>
+        <ul class="space-y-3 list-none m-0 p-0">
+          {% for item in [
+            { label: 'زيت العود', href: '/categories/oud-oil' },
+            { label: 'شرائح العود', href: '/categories/oud-chips' },
+            { label: 'البخور', href: '/categories/incense' },
+            { label: 'مجموعات الهدايا', href: '/categories/gift-sets' },
+            { label: 'الأكثر مبيعاً', href: '/categories/best-sellers' }
+          ] %}
+            <li>
+              <a href="{{ store.url }}{{ item.href }}"
+                class="text-ivory/60 hover:text-gold text-sm transition-colors duration-200 flex items-center gap-2 group">
+                <span class="w-0 group-hover:w-3 h-px bg-gold transition-all duration-200 shrink-0"></span>
+                {{ item.label | trans }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {# Column 3 — Support #}
+      <div>
+        <h3 class="text-gold font-tajawal font-semibold text-base mb-5 tracking-wide uppercase after:block after:w-8 after:h-0.5 after:bg-gold after:mt-2">
+          {{ 'الدعم' | trans }}
+        </h3>
+        <ul class="space-y-3 list-none m-0 p-0">
+          {% for item in [
+            { label: 'سياسة الاسترجاع', href: '/pages/return-policy' },
+            { label: 'الشحن والتوصيل', href: '/pages/shipping' },
+            { label: 'الأسئلة الشائعة', href: '/pages/faq' },
+            { label: 'تتبع طلبك', href: '/orders/tracking' },
+            { label: 'تواصل معنا', href: '/pages/contact' }
+          ] %}
+            <li>
+              <a href="{{ store.url }}{{ item.href }}"
+                class="text-ivory/60 hover:text-gold text-sm transition-colors duration-200 flex items-center gap-2 group">
+                <span class="w-0 group-hover:w-3 h-px bg-gold transition-all duration-200 shrink-0"></span>
+                {{ item.label | trans }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {# Column 4 — Contact #}
+      <div>
+        <h3 class="text-gold font-tajawal font-semibold text-base mb-5 tracking-wide uppercase after:block after:w-8 after:h-0.5 after:bg-gold after:mt-2">
+          {{ 'تواصل' | trans }}
+        </h3>
+        <ul class="space-y-4 list-none m-0 p-0">
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}"
+              class="text-ivory/60 hover:text-gold text-sm transition-colors">
+              +{{ settings.whatsapp_number|default('966XXXXXXXXX') }}
+            </a>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:{{ store.email|default('info@oudsudwan.com') }}"
+              class="text-ivory/60 hover:text-gold text-sm transition-colors">
+              {{ store.email|default('info@oudsudwan.com') }}
+            </a>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="text-ivory/60 text-sm">{{ 'المملكة العربية السعودية' | trans }}</span>
+          </li>
+        </ul>
+
+        {# Payment icons #}
+        <div class="mt-6">
+          <p class="text-ivory/40 text-xs mb-3">{{ 'طرق الدفع المقبولة' | trans }}</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            {% for method in ['Mada', 'Visa', 'Apple Pay', 'STC Pay'] %}
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-ivory/50 text-xs font-cormorant">
+                {{ method }}
+              </span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# Divider #}
+    <div class="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent mb-8"></div>
+
+    {# Bottom bar #}
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-ivory/40 text-xs">
+      <p>© {{ "now"|date("Y") }} {{ store.name }}. {{ 'جميع الحقوق محفوظة.' | trans }}</p>
+      <div class="flex items-center gap-4">
+        <a href="{{ store.url }}/pages/privacy" class="hover:text-gold transition-colors">{{ 'سياسة الخصوصية' | trans }}</a>
+        <span class="text-gold/30">|</span>
+        <a href="{{ store.url }}/pages/terms" class="hover:text-gold transition-colors">{{ 'الشروط والأحكام' | trans }}</a>
+      </div>
+    </div>
+  </div>
+</footer>
