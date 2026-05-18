@@ -1,59 +1,69 @@
 {
   "name": "OUDSUDWAN",
-  "description": "Luxury Vietnamese Oud Store Theme",
+  "description": "Luxury Vietnamese Oud Store - سدوان للعود",
   "version": "1.0.0",
   "author": "OUDSUDWAN",
   "theme_id": 1018760024,
-  "settings": {
-    "whatsapp_number": {
+  "features": [
+    {
+      "id": "slider",
+      "name": "Hero Slider",
+      "component": "components/hero-slider.twig"
+    },
+    {
+      "id": "category",
+      "name": "Categories",
+      "component": "components/categories.twig"
+    },
+    {
+      "id": "products",
+      "name": "Featured Products",
+      "component": "components/featured-products.twig"
+    },
+    {
+      "id": "brand",
+      "name": "Brand Story",
+      "component": "components/brand-story.twig"
+    },
+    {
+      "id": "testimonials",
+      "name": "Testimonials",
+      "component": "components/testimonials.twig"
+    },
+    {
+      "id": "newsletter",
+      "name": "Newsletter",
+      "component": "components/newsletter.twig"
+    },
+    {
+      "id": "whatsapp_banner",
+      "name": "WhatsApp CTA",
+      "component": "components/whatsapp-banner.twig"
+    },
+    {
+      "id": "announcement",
+      "name": "Announcement Bar",
+      "component": "components/announcement-bar.twig"
+    }
+  ],
+  "settings": [
+    {
+      "id": "whatsapp_number",
       "type": "text",
       "label": "WhatsApp Number",
       "default": "966XXXXXXXXX"
     },
-    "announcement_text": {
+    {
+      "id": "announcement_text",
       "type": "text",
       "label": "Announcement Bar Text",
       "default": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
     },
-    "hero_slide_1_image": {
-      "type": "image",
-      "label": "Hero Slide 1 Image",
-      "default": ""
-    },
-    "hero_slide_1_title": {
-      "type": "text",
-      "label": "Hero Slide 1 Title (Arabic)",
-      "default": "عود فيتنامي أصيل"
-    },
-    "hero_slide_2_image": {
-      "type": "image",
-      "label": "Hero Slide 2 Image",
-      "default": ""
-    },
-    "hero_slide_2_title": {
-      "type": "text",
-      "label": "Hero Slide 2 Title (Arabic)",
-      "default": "زيوت العود الفاخرة"
-    },
-    "hero_slide_3_image": {
-      "type": "image",
-      "label": "Hero Slide 3 Image",
-      "default": ""
-    },
-    "hero_slide_3_title": {
-      "type": "text",
-      "label": "Hero Slide 3 Title (Arabic)",
-      "default": "مجموعات الهدايا الملكية"
-    },
-    "about_image": {
-      "type": "image",
-      "label": "Brand Story Image",
-      "default": ""
-    },
-    "show_announcement_bar": {
-      "type": "checkbox",
+    {
+      "id": "show_announcement",
+      "type": "toggle",
       "label": "Show Announcement Bar",
       "default": true
     }
-  }
+  ]
 }

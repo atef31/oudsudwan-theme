@@ -1,60 +1,47 @@
 <!DOCTYPE html>
-<html lang="{{ store.language_code|default('ar') }}" dir="{{ store.direction|default('rtl') }}">
+<html lang="{{ store.language.code ?? store.language_code ?? 'ar' }}"
+      dir="{{ store.language.dir ?? store.direction ?? 'rtl' }}">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}{{ page.title|default(store.name) }} | {{ store.name }}{% endblock %}</title>
-  <meta name="description" content="{% block description %}{{ page.description|default(store.description) }}{% endblock %}" />
-  <link rel="canonical" href="{{ store.url }}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ page.title ?? store.name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ page.description ?? store.description }}{% endblock %}">
+  <link rel="canonical" href="{{ store.url }}">
 
-  {# Open Graph #}
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="{{ store.name }}" />
-  <meta property="og:title" content="{{ page.title|default(store.name) }}" />
-  <meta property="og:description" content="{{ page.description|default(store.description) }}" />
-  <meta property="og:image" content="{% block og_image %}{{ store.logo }}{% endblock %}" />
-  <meta property="og:url" content="{{ store.url }}" />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ store.name }}">
+  <meta property="og:title" content="{{ page.title ?? store.name }}">
+  <meta property="og:description" content="{{ page.description ?? store.description }}">
+  <meta property="og:image" content="{% block og_image %}{{ store.logo }}{% endblock %}">
+  <meta property="og:url" content="{{ store.url }}">
 
-  {# Favicon #}
-  <link rel="icon" type="image/png" href="{{ store.logo }}" />
+  <link rel="icon" type="image/png" href="{{ store.logo }}">
 
-  {# Google Fonts: Tajawal + Cormorant Garamond #}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  {% hook 'head:start' %}
 
-  {# Tailwind compiled CSS #}
-  <link rel="stylesheet" href="{{ 'dist/css/app.css' | asset_url }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  {# Salla Web Components #}
-  <script type="module" src="https://cdn.salla.network/js/twilight-components.js"></script>
+  <link rel="stylesheet" href="{{ 'dist/css/app.css' | asset }}">
 
   {% block head %}{% endblock %}
   {% hook 'head:end' %}
 </head>
 
-<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden" style="font-family: 'Tajawal', sans-serif;">
+<body class="font-arabic bg-white text-gray-900 antialiased overflow-x-hidden">
 
   {% hook 'body:start' %}
 
-  {# Announcement bar #}
-  {% include 'components/announcement-bar.twig' %}
-
-  {# Header #}
   {% include 'components/header.twig' %}
 
-  {# Page content #}
   <main id="main-content">
     {% block content %}{% endblock %}
   </main>
 
-  {# Footer #}
   {% include 'components/footer.twig' %}
-
-  {# Floating WhatsApp #}
   {% include 'components/whatsapp.twig' %}
 
-  {# Back to top #}
   <button id="back-to-top"
           aria-label="{{ trans('general.back_to_top') }}"
           class="fixed bottom-24 end-6 z-50 w-11 h-11 rounded-full bg-gold text-black flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-gold-dark shadow-gold">
@@ -63,11 +50,9 @@
     </svg>
   </button>
 
-  {# Salla cart drawer #}
   <salla-cart-summary></salla-cart-summary>
 
-  {# Custom JS #}
-  <script src="{{ 'src/assets/js/app.js' | asset_url }}"></script>
+  <script src="{{ 'dist/js/app.js' | asset }}"></script>
 
   {% block scripts %}{% endblock %}
   {% hook 'body:end' %}

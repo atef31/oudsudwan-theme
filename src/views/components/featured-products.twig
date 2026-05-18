@@ -1,0 +1,46 @@
+<section class="py-14 lg:py-20 bg-white">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <p class="text-gold text-xs tracking-[0.3em] uppercase mb-2" style="font-family:'Cormorant Garamond',serif;">OUDSUDWAN</p>
+        <h2 class="text-2xl lg:text-3xl font-black text-gray-900">{{ trans('general.featured_title') }}</h2>
+        <div class="w-10 h-0.5 bg-gold mt-3"></div>
+      </div>
+      <a href="{{ store.url }}/categories"
+         class="hidden sm:inline-flex items-center gap-1.5 text-gold hover:text-gold-dark text-sm font-medium transition-colors">
+        {{ trans('general.view_all') }}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {% if products is defined and products|length > 0 %}
+        {% for product in products|slice(0, 8) %}
+          {% include 'components/product-card.twig' %}
+        {% endfor %}
+      {% else %}
+        {% for i in 1..8 %}
+          <div class="bg-gray-50 rounded-xl overflow-hidden animate-pulse">
+            <div class="aspect-square bg-gray-100"></div>
+            <div class="p-4 space-y-2">
+              <div class="h-3 bg-gray-100 rounded w-3/4"></div>
+              <div class="h-3 bg-gray-100 rounded w-1/2"></div>
+              <div class="h-8 bg-gray-100 rounded mt-2"></div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="mt-8 text-center sm:hidden">
+      <a href="{{ store.url }}/categories"
+         class="inline-flex items-center gap-2 border border-gold text-gold hover:bg-gold hover:text-black px-6 py-3 rounded-xl transition-all text-sm font-medium">
+        {{ trans('general.view_all') }}
+      </a>
+    </div>
+
+  </div>
+</section>

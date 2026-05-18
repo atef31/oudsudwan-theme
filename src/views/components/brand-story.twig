@@ -1,0 +1,61 @@
+<section class="py-14 lg:py-24 bg-white">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      {# Image #}
+      <div class="relative order-2 lg:order-1">
+        {% if settings.about_image %}
+          <img src="{{ settings.about_image }}"
+               alt="{{ trans('general.brand_story_title') }}"
+               loading="lazy"
+               class="w-full rounded-2xl object-cover aspect-[4/5]">
+        {% else %}
+          <div class="w-full rounded-2xl bg-gradient-to-br from-dark-brown to-gray-900 aspect-[4/5] flex items-center justify-center">
+            <p class="text-gold/30 text-xl" style="font-family:'Cormorant Garamond',serif;">OUDSUDWAN</p>
+          </div>
+        {% endif %}
+        <div class="absolute -bottom-4 -end-4 w-24 h-24 border-2 border-gold/20 rounded-2xl hidden lg:block -z-10"></div>
+        <div class="absolute bottom-6 end-6 bg-white border border-gold/20 rounded-xl px-5 py-4 shadow-card">
+          <p class="text-gold font-black text-3xl leading-none">10+</p>
+          <p class="text-gray-500 text-xs mt-1">سنوات من الخبرة</p>
+        </div>
+      </div>
+
+      {# Text #}
+      <div class="order-1 lg:order-2">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase mb-3" style="font-family:'Cormorant Garamond',serif;">{{ trans('general.our_story') }}</p>
+        <h2 class="text-2xl lg:text-4xl font-black text-gray-900 mb-4 leading-tight">
+          {{ trans('general.brand_story_title') }}
+        </h2>
+        <div class="w-10 h-0.5 bg-gold mb-6"></div>
+        <p class="text-gray-600 leading-relaxed mb-4 text-sm lg:text-base">
+          {{ trans('general.brand_story_text') }}
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-8 text-sm lg:text-base">
+          كل قطرة من زيوتنا وكل شريحة من عودنا تحكي قصة أرض غنية، وحرفيين ماهرين، وشغف لا ينتهي بتقديم الأفضل لكم.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 mb-8">
+          {% for stat in [
+            { n: '50+',  l: 'منتج فاخر' },
+            { n: '10K+', l: 'عميل سعيد' },
+            { n: '100%', l: 'طبيعي خالص' }
+          ] %}
+            <div class="text-center py-4 border border-gray-100 rounded-xl hover:border-gold/30 transition-colors">
+              <p class="text-gold font-black text-2xl leading-none mb-1">{{ stat.n }}</p>
+              <p class="text-gray-400 text-xs">{{ stat.l }}</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        <a href="{{ store.url }}/pages/our-story"
+           class="inline-flex items-center gap-2 border border-gold text-gold hover:bg-gold hover:text-black font-semibold px-7 py-3.5 rounded-xl transition-all duration-300">
+          {{ trans('general.learn_more') }}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
