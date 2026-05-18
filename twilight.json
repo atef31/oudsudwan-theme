@@ -1,171 +1,59 @@
 {
-  "name": {
-    "ar": "سدوان للعود",
-    "en": "OUDSUDWAN"
-  },
-  "repository": "https://github.com/atef31/oudsudwan-theme",
-  "author_email": "atefma65@gmail.com",
-  "support_url": "https://wa.me/966XXXXXXXXX",
-  "description": {
-    "ar": "قالب متجر عود فاخر — زيوت وشرائح وبخور ومنتجات العود الفيتنامي الأصيل",
-    "en": "Luxury oud store theme — oils, chips, incense and authentic Vietnamese agarwood products"
-  },
-  "features": [],
-  "settings": [
-    {
-      "id": "logo",
-      "type": "string",
-      "format": "image",
-      "label": "Logo",
-      "required": false,
-      "value": null
-    },
-    {
-      "id": "logo_white",
-      "type": "string",
-      "format": "image",
-      "label": "White Logo",
-      "required": false,
-      "value": null
-    },
-    {
-      "id": "favicon",
-      "type": "string",
-      "format": "image",
-      "label": "Favicon",
-      "required": false,
-      "value": null
-    },
-    {
-      "id": "whatsapp_number",
-      "type": "string",
-      "format": "text",
+  "name": "OUDSUDWAN",
+  "description": "Luxury Vietnamese Oud Store Theme",
+  "version": "1.0.0",
+  "author": "OUDSUDWAN",
+  "theme_id": 1018760024,
+  "settings": {
+    "whatsapp_number": {
+      "type": "text",
       "label": "WhatsApp Number",
-      "placeholder": "966XXXXXXXXX",
-      "required": false,
-      "value": "966XXXXXXXXX"
+      "default": "966XXXXXXXXX"
     },
-    {
-      "id": "show_announcement_bar",
-      "type": "boolean",
-      "format": "switch",
-      "label": "Show Announcement Bar",
-      "required": false,
-      "value": true,
-      "selected": true
+    "announcement_text": {
+      "type": "text",
+      "label": "Announcement Bar Text",
+      "default": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
     },
-    {
-      "id": "announcement_text_ar",
-      "type": "string",
-      "format": "text",
-      "label": "Announcement Bar Text (Arabic)",
-      "required": false,
-      "value": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
+    "hero_slide_1_image": {
+      "type": "image",
+      "label": "Hero Slide 1 Image",
+      "default": ""
     },
-    {
-      "id": "announcement_text_en",
-      "type": "string",
-      "format": "text",
-      "label": "Announcement Bar Text (English)",
-      "required": false,
-      "value": "Free shipping on orders over 300 SAR"
+    "hero_slide_1_title": {
+      "type": "text",
+      "label": "Hero Slide 1 Title (Arabic)",
+      "default": "عود فيتنامي أصيل"
     },
-    {
-      "id": "hero_slide_1_title_ar",
-      "type": "string",
-      "format": "text",
-      "label": "Hero Slide 1 - Arabic Title",
-      "required": false,
-      "value": "عود فيتنامي أصيل"
+    "hero_slide_2_image": {
+      "type": "image",
+      "label": "Hero Slide 2 Image",
+      "default": ""
     },
-    {
-      "id": "hero_slide_1_subtitle_en",
-      "type": "string",
-      "format": "text",
-      "label": "Hero Slide 1 - English Subtitle",
-      "required": false,
-      "value": "Authentic Vietnamese Oud"
+    "hero_slide_2_title": {
+      "type": "text",
+      "label": "Hero Slide 2 Title (Arabic)",
+      "default": "زيوت العود الفاخرة"
     },
-    {
-      "id": "hero_slide_1_image",
-      "type": "string",
-      "format": "image",
-      "label": "Hero Slide 1 - Image",
-      "required": false,
-      "value": null
+    "hero_slide_3_image": {
+      "type": "image",
+      "label": "Hero Slide 3 Image",
+      "default": ""
     },
-    {
-      "id": "hero_slide_2_title_ar",
-      "type": "string",
-      "format": "text",
-      "label": "Hero Slide 2 - Arabic Title",
-      "required": false,
-      "value": "زيوت العود الفاخرة"
+    "hero_slide_3_title": {
+      "type": "text",
+      "label": "Hero Slide 3 Title (Arabic)",
+      "default": "مجموعات الهدايا الملكية"
     },
-    {
-      "id": "hero_slide_2_subtitle_en",
-      "type": "string",
-      "format": "text",
-      "label": "Hero Slide 2 - English Subtitle",
-      "required": false,
-      "value": "Premium Oud Oils Collection"
-    },
-    {
-      "id": "hero_slide_2_image",
-      "type": "string",
-      "format": "image",
-      "label": "Hero Slide 2 - Image",
-      "required": false,
-      "value": null
-    },
-    {
-      "id": "hero_slide_3_title_ar",
-      "type": "string",
-      "format": "text",
-      "label": "Hero Slide 3 - Arabic Title",
-      "required": false,
-      "value": "مجموعات الهدايا الملكية"
-    },
-    {
-      "id": "hero_slide_3_subtitle_en",
-      "type": "string",
-      "format": "text",
-      "label": "Hero Slide 3 - English Subtitle",
-      "required": false,
-      "value": "Royal Gift Collections"
-    },
-    {
-      "id": "hero_slide_3_image",
-      "type": "string",
-      "format": "image",
-      "label": "Hero Slide 3 - Image",
-      "required": false,
-      "value": null
-    },
-    {
-      "id": "about_image",
-      "type": "string",
-      "format": "image",
+    "about_image": {
+      "type": "image",
       "label": "Brand Story Image",
-      "required": false,
-      "value": null
+      "default": ""
     },
-    {
-      "id": "featured_product_banner_image",
-      "type": "string",
-      "format": "image",
-      "label": "Featured Product Banner Image",
-      "required": false,
-      "value": null
-    },
-    {
-      "id": "featured_product_banner_id",
-      "type": "string",
-      "format": "text",
-      "label": "Featured Product Banner - Product ID",
-      "required": false,
-      "value": null
+    "show_announcement_bar": {
+      "type": "checkbox",
+      "label": "Show Announcement Bar",
+      "default": true
     }
-  ],
-  "components": []
+  }
 }

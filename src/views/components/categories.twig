@@ -1,92 +1,44 @@
-<section class="py-16 lg:py-24 bg-black">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
+<section class="py-14 lg:py-20 bg-gray-50" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
 
-    {# Section header #}
-    <div class="text-center mb-12">
-      <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-3">{{ 'تسوق حسب الفئة' | trans }}</p>
-      <h2 class="font-tajawal font-black text-white text-section mb-4">{{ 'مجموعاتنا' | trans }}</h2>
-      <div class="w-16 h-0.5 bg-gold mx-auto"></div>
+    <div class="text-center mb-10">
+      <p class="text-gold text-sm tracking-[0.25em] uppercase mb-2" style="font-family: 'Cormorant Garamond', serif;">OUDSUDWAN</p>
+      <h2 class="text-2xl lg:text-3xl font-black text-gray-900 mb-3">{{ trans('general.categories_title') }}</h2>
+      <div class="w-12 h-0.5 bg-gold mx-auto"></div>
     </div>
 
-    {# 2×2 grid #}
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-
-      {% set categories = [
-        {
-          name_ar: 'زيت العود',
-          name_en: 'Oud Oil',
-          desc: 'أرقى زيوت العود الفيتنامي الخالصة',
-          price_from: '195',
-          href: store.url ~ '/categories/oud-oil',
-          image: '',
-          icon: '🫙'
-        },
-        {
-          name_ar: 'شرائح العود',
-          name_en: 'Oud Chips',
-          desc: 'شرائح عود فاخرة للتبخير',
-          price_from: '120',
-          href: store.url ~ '/categories/oud-chips',
-          image: '',
-          icon: '🪵'
-        },
-        {
-          name_ar: 'البخور',
-          name_en: 'Incense',
-          desc: 'بخور عربي فاخر بعبق شرقي',
-          price_from: '95',
-          href: store.url ~ '/categories/incense',
-          image: '',
-          icon: '🕯️'
-        },
-        {
-          name_ar: 'مجموعات الهدايا',
-          name_en: 'Gift Sets',
-          desc: 'مجموعات هدايا ملكية فاخرة',
-          price_from: '175',
-          href: store.url ~ '/categories/gift-sets',
-          image: '',
-          icon: '🎁'
-        }
+      {% set default_cats = [
+        { name: trans('general.oud_oil'),   slug: 'oud-oil',   from: '195' },
+        { name: trans('general.oud_chips'), slug: 'oud-chips', from: '120' },
+        { name: trans('general.incense'),   slug: 'incense',   from: '95'  },
+        { name: trans('general.gift_sets'), slug: 'gift-sets', from: '175' }
       ] %}
 
-      {% for cat in categories %}
-        <a href="{{ cat.href }}"
-           class="category-card group relative overflow-hidden rounded-xl border border-white/8 hover:border-gold/40 transition-all duration-400 aspect-[3/4] flex flex-col justify-end bg-brand-gray">
-
-          {# Background image / fallback gradient #}
-          {% if cat.image %}
-            <img src="{{ cat.image }}" alt="{{ cat.name_ar }}"
-                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-          {% else %}
-            <div class="absolute inset-0 bg-gradient-to-br from-dark-brown/80 via-black to-brand-gray"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">{{ cat.icon }}</div>
-          {% endif %}
-
-          {# Gradient overlay #}
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-
-          {# Gold accent line on hover #}
-          <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-start"></div>
-
-          {# Content #}
-          <div class="relative z-10 p-4 lg:p-6">
-            <p class="font-cormorant text-gold/70 text-xs tracking-widest uppercase mb-1">{{ cat.name_en }}</p>
-            <h3 class="font-tajawal font-bold text-white text-lg lg:text-xl mb-1 group-hover:text-gold transition-colors duration-300">
-              {{ cat.name_ar }}
-            </h3>
-            <p class="text-ivory/50 text-xs mb-3 hidden lg:block">{{ cat.desc }}</p>
-            <div class="flex items-center justify-between">
-              <span class="text-gold text-sm font-medium">{{ 'من' | trans }} {{ cat.price_from }} {{ store.currency|default('ر.س') }}</span>
-              <span class="w-7 h-7 rounded-full border border-gold/40 flex items-center justify-center text-gold/70 group-hover:bg-gold group-hover:text-black group-hover:border-gold transition-all duration-300">
-                <svg class="w-3.5 h-3.5 {{ store.direction == 'rtl' ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </span>
+      {% if store.categories is defined and store.categories|length > 0 %}
+        {% for cat in store.categories|slice(0,4) %}
+          <a href="{{ cat.url }}" class="group relative overflow-hidden rounded-xl aspect-[3/4] flex flex-col justify-end bg-gray-200 border border-gray-200 hover:border-gold/40 transition-all duration-400">
+            {% if cat.image.url %}<img src="{{ cat.image.url }}" alt="{{ cat.name }}" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />{% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-start"></div>
+            <div class="relative z-10 p-4">
+              <h3 class="text-white font-bold text-base mb-1">{{ cat.name }}</h3>
+              <span class="text-gold text-sm">{{ trans('general.explore') }} ←</span>
             </div>
-          </div>
-        </a>
-      {% endfor %}
+          </a>
+        {% endfor %}
+      {% else %}
+        {% for cat in default_cats %}
+          <a href="{{ store.url }}/categories/{{ cat.slug }}" class="group relative overflow-hidden rounded-xl aspect-[3/4] flex flex-col justify-end bg-dark-brown border border-transparent hover:border-gold/40 transition-all duration-400">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-start"></div>
+            <div class="relative z-10 p-4">
+              <h3 class="text-white font-bold text-base mb-0.5">{{ cat.name }}</h3>
+              <p class="text-gold text-xs">{{ trans('general.from_price') }} {{ cat.from }} {{ trans('general.sar') }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>

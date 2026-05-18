@@ -1,189 +1,66 @@
 {% extends 'layouts/master.twig' %}
-
-{% block title %}{{ category.name|default('المجموعة') }} | {{ store.name }}{% endblock %}
-{% block description %}{{ category.description|default('تسوق مجموعة سدوان للعود الفاخرة من زيوت العود وشرائح العود والبخور.') }}{% endblock %}
+{% block title %}{{ category.name|default(trans('general.products')) }} | {{ store.name }}{% endblock %}
 
 {% block content %}
-
-{# Breadcrumb #}
-<nav class="bg-brand-gray border-b border-gold/10 py-3">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
-    <ol class="flex items-center gap-2 text-xs text-ivory/50 list-none m-0 p-0">
-      <li><a href="{{ store.url }}" class="hover:text-gold transition-colors">{{ 'الرئيسية' | trans }}</a></li>
-      <li class="text-gold/30">›</li>
-      <li class="text-gold">{{ category.name|default('المجموعة') }}</li>
-    </ol>
-  </div>
-</nav>
-
-{# Category hero #}
-<section class="bg-brand-gray py-12 border-b border-gold/10 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 30px 30px;"></div>
-  <div class="relative z-10 max-w-screen-xl2 mx-auto px-4 lg:px-8 text-center">
-    <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-3">OUDSUDWAN</p>
-    <h1 class="font-tajawal font-black text-white text-section mb-3">{{ category.name|default('جميع المنتجات') }}</h1>
-    {% if category.description %}
-      <p class="text-ivory/60 text-sm max-w-lg mx-auto">{{ category.description }}</p>
-    {% endif %}
-    <div class="w-16 h-0.5 bg-gold mx-auto mt-5"></div>
+<section class="py-8 bg-gray-50 border-b border-gray-100" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
+    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+      <a href="{{ store.url }}" class="hover:text-gold transition-colors">{{ trans('general.home') }}</a>
+      <span>›</span>
+      <span class="text-gray-900">{{ category.name|default(trans('general.products')) }}</span>
+    </nav>
+    <h1 class="text-2xl lg:text-3xl font-black text-gray-900">{{ category.name|default(trans('general.products')) }}</h1>
   </div>
 </section>
 
-{# Products layout #}
-<section class="py-12 bg-black">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
+<section class="py-10" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
     <div class="flex flex-col lg:flex-row gap-8">
 
-      {# Sidebar filters #}
-      <aside class="w-full lg:w-64 shrink-0">
-        <div class="bg-brand-gray border border-white/8 rounded-xl p-5 sticky top-24">
-          <h2 class="font-tajawal font-bold text-white text-base mb-5 flex items-center justify-between">
-            {{ 'تصفية النتائج' | trans }}
-            <button class="text-ivory/40 hover:text-gold text-xs transition-colors" onclick="clearFilters()">
-              {{ 'مسح الكل' | trans }}
-            </button>
-          </h2>
-
-          {# Categories filter #}
-          <div class="mb-6">
-            <h3 class="text-gold/80 text-xs tracking-widest uppercase mb-3">{{ 'الفئة' | trans }}</h3>
-            <ul class="space-y-2 list-none m-0 p-0">
-              {% for cat in [
-                { name: 'زيت العود', slug: 'oud-oil' },
-                { name: 'شرائح العود', slug: 'oud-chips' },
-                { name: 'البخور', slug: 'incense' },
-                { name: 'مجموعات الهدايا', slug: 'gift-sets' }
-              ] %}
-                <li>
-                  <a href="{{ store.url }}/categories/{{ cat.slug }}"
-                    class="flex items-center gap-2 text-ivory/70 hover:text-gold text-sm transition-colors py-1 {{ category.slug == cat.slug ? 'text-gold font-medium' : '' }}">
-                    <span class="w-1.5 h-1.5 rounded-full {{ category.slug == cat.slug ? 'bg-gold' : 'bg-white/20' }}"></span>
-                    {{ cat.name | trans }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-
-          {# Price range #}
-          <div class="mb-6">
-            <h3 class="text-gold/80 text-xs tracking-widest uppercase mb-3">{{ 'نطاق السعر' | trans }}</h3>
-            <div class="flex items-center gap-2">
-              <input type="number" placeholder="من" min="0"
-                class="w-full bg-black border border-white/10 text-ivory text-sm rounded px-3 py-2 focus:border-gold focus:outline-none" />
-              <span class="text-ivory/40">—</span>
-              <input type="number" placeholder="إلى" min="0"
-                class="w-full bg-black border border-white/10 text-ivory text-sm rounded px-3 py-2 focus:border-gold focus:outline-none" />
-            </div>
-          </div>
-
-          {# Sort (mobile hidden, shown in top bar on desktop) #}
-          <div class="lg:hidden">
-            <h3 class="text-gold/80 text-xs tracking-widest uppercase mb-3">{{ 'الترتيب' | trans }}</h3>
-            <select class="w-full bg-black border border-white/10 text-ivory text-sm rounded px-3 py-2.5 focus:border-gold focus:outline-none appearance-none">
-              <option>{{ 'الأحدث' | trans }}</option>
-              <option>{{ 'السعر: من الأقل' | trans }}</option>
-              <option>{{ 'السعر: من الأعلى' | trans }}</option>
-              <option>{{ 'الأكثر مبيعاً' | trans }}</option>
-            </select>
-          </div>
+      {# Sidebar #}
+      <aside class="w-full lg:w-60 shrink-0">
+        <div class="bg-white border border-gray-100 rounded-xl p-5 sticky top-24">
+          <h2 class="font-bold text-gray-900 text-sm mb-4">{{ trans('general.categories') }}</h2>
+          <ul class="space-y-2 list-none m-0 p-0">
+            {% for item in [
+              { l: trans('general.oud_oil'),   s: 'oud-oil' },
+              { l: trans('general.oud_chips'), s: 'oud-chips' },
+              { l: trans('general.incense'),   s: 'incense' },
+              { l: trans('general.gift_sets'), s: 'gift-sets' }
+            ] %}
+              <li><a href="{{ store.url }}/categories/{{ item.s }}"
+                class="flex items-center gap-2 text-sm py-1.5 {{ category.slug == item.s ? 'text-gold font-semibold' : 'text-gray-500 hover:text-gold' }} transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full {{ category.slug == item.s ? 'bg-gold' : 'bg-gray-300' }}"></span>
+                {{ item.l }}
+              </a></li>
+            {% endfor %}
+          </ul>
         </div>
       </aside>
 
-      {# Main products area #}
+      {# Products #}
       <main class="flex-1">
-
-        {# Top bar #}
-        <div class="flex items-center justify-between mb-6 gap-4">
-          <p class="text-ivory/50 text-sm">
-            {% if products is defined %}
-              {{ products|length }} {{ 'منتج' | trans }}
-            {% endif %}
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="hidden lg:flex items-center gap-2">
-              <span class="text-ivory/50 text-sm">{{ 'الترتيب:' | trans }}</span>
-              <select class="bg-brand-gray border border-white/10 text-ivory text-sm rounded px-3 py-2 focus:border-gold focus:outline-none appearance-none">
-                <option>{{ 'الأحدث' | trans }}</option>
-                <option>{{ 'السعر: من الأقل' | trans }}</option>
-                <option>{{ 'السعر: من الأعلى' | trans }}</option>
-                <option>{{ 'الأكثر مبيعاً' | trans }}</option>
-              </select>
-            </div>
-            {# View toggle #}
-            <div class="flex items-center border border-white/10 rounded overflow-hidden">
-              <button class="view-btn p-2 bg-gold text-black" data-view="grid" aria-label="{{ 'عرض شبكي' | trans }}">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                </svg>
-              </button>
-              <button class="view-btn p-2 bg-transparent text-ivory/50 hover:text-gold" data-view="list" aria-label="{{ 'عرض قائمة' | trans }}">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-              </button>
-            </div>
-          </div>
+        <div class="flex items-center justify-between mb-6">
+          <p class="text-gray-500 text-sm">{% if products is defined %}{{ products|length }} منتج{% endif %}</p>
         </div>
-
-        {# Products grid #}
-        <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {% if products is defined and products|length > 0 %}
-            {% for product in products %}
-              {% include 'components/product-card.twig' with { product: product } %}
-            {% endfor %}
+            {% for product in products %}{% include 'components/product-card.twig' %}{% endfor %}
           {% else %}
-            <div class="col-span-full text-center py-16">
-              <svg class="w-16 h-16 text-gold/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-              </svg>
-              <p class="text-ivory/40 text-lg font-tajawal">{{ 'لا توجد منتجات في هذه الفئة حالياً' | trans }}</p>
+            <div class="col-span-full text-center py-16 text-gray-400">
+              <svg class="w-12 h-12 mx-auto mb-3 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              لا توجد منتجات حالياً
             </div>
           {% endif %}
         </div>
-
-        {# Pagination #}
         {% if pagination is defined %}
           <div class="mt-10 flex items-center justify-center gap-2">
-            {% if pagination.prev %}
-              <a href="{{ pagination.prev }}" class="px-4 py-2 border border-gold/30 text-gold rounded hover:bg-gold hover:text-black transition-all duration-200 text-sm">
-                {{ 'السابق' | trans }}
-              </a>
-            {% endif %}
-            <span class="text-ivory/50 text-sm px-3">{{ pagination.current }} / {{ pagination.total }}</span>
-            {% if pagination.next %}
-              <a href="{{ pagination.next }}" class="px-4 py-2 border border-gold/30 text-gold rounded hover:bg-gold hover:text-black transition-all duration-200 text-sm">
-                {{ 'التالي' | trans }}
-              </a>
-            {% endif %}
+            {% if pagination.prev %}<a href="{{ pagination.prev }}" class="px-4 py-2 border border-gray-200 rounded hover:border-gold text-sm transition-colors">{{ trans('general.home') }}</a>{% endif %}
+            {% if pagination.next %}<a href="{{ pagination.next }}" class="px-4 py-2 border border-gold text-gold rounded hover:bg-gold hover:text-black text-sm transition-all">التالي</a>{% endif %}
           </div>
         {% endif %}
       </main>
     </div>
   </div>
 </section>
-
-{% endblock %}
-
-{% block scripts %}
-<script>
-document.querySelectorAll('.view-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const view = btn.dataset.view;
-    const grid = document.getElementById('products-grid');
-    document.querySelectorAll('.view-btn').forEach(b => {
-      b.classList.toggle('bg-gold', b === btn);
-      b.classList.toggle('text-black', b === btn);
-      b.classList.toggle('bg-transparent', b !== btn);
-      b.classList.toggle('text-ivory/50', b !== btn);
-    });
-    if (view === 'list') {
-      grid.className = 'grid grid-cols-1 gap-4';
-    } else {
-      grid.className = 'grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6';
-    }
-  });
-});
-function clearFilters() { window.location.href = window.location.pathname; }
-</script>
 {% endblock %}

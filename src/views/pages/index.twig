@@ -1,7 +1,6 @@
 {% extends 'layouts/master.twig' %}
 
-{% block title %}{{ store.name }} — {{ 'عود فيتنامي فاخر' | trans }}{% endblock %}
-{% block description %}{{ 'زيوت العود الفيتنامي الفاخرة، شرائح العود، البخور ومنتجات العود الأصيلة. سدوان للعود — لمن يُقدِّر الأناقة الحقيقية.' | trans }}{% endblock %}
+{% block title %}{{ store.name }} — {{ trans('general.best_sellers') }}{% endblock %}
 
 {% block content %}
 
@@ -9,25 +8,22 @@
 {% include 'components/hero-slider.twig' %}
 
 {# ── 2. Trust Strip ── #}
-<section class="bg-brand-gray border-y border-gold/10 py-6">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x lg:divide-x-reverse divide-gold/15">
-      {% set trust_items = [
-        { icon: 'M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0', title_ar: 'شحن سريع', title_en: 'Fast Shipping', desc: 'توصيل خلال 2-5 أيام' },
-        { icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4', title_ar: 'تغليف فاخر', title_en: 'Luxury Packaging', desc: 'صناديق هدايا راقية' },
-        { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title_ar: '100% طبيعي', title_en: '100% Natural', desc: 'خالٍ من أي إضافات' },
-        { icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title_ar: 'دعم واتساب', title_en: 'WhatsApp Support', desc: 'خبير عود متاح دائماً' }
+<section class="py-8 bg-white border-b border-gray-100" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:divide-x lg:divide-x-reverse divide-gray-100">
+      {% for item in [
+        { icon: 'M13 10V3L4 14h7v7l9-11h-7z', title: trans('general.fast_shipping'), sub: trans('general.fast_shipping_sub') },
+        { icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4', title: trans('general.luxury_packaging'), sub: trans('general.luxury_packaging_sub') },
+        { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title: trans('general.quality_guarantee'), sub: trans('general.quality_guarantee_sub') },
+        { icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z', title: trans('general.whatsapp_support'), sub: trans('general.whatsapp_support_sub') }
       ] %}
-      {% for item in trust_items %}
-        <div class="flex items-center gap-4 px-4 lg:px-8 py-2">
-          <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/25 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ item.icon }}"/>
-            </svg>
+        <div class="flex items-center gap-4 px-4">
+          <div class="w-11 h-11 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ item.icon }}"/></svg>
           </div>
           <div>
-            <p class="font-tajawal font-semibold text-ivory text-sm">{{ item.title_ar }}</p>
-            <p class="text-ivory/50 text-xs">{{ item.desc }}</p>
+            <p class="font-semibold text-gray-900 text-sm">{{ item.title }}</p>
+            <p class="text-gray-500 text-xs mt-0.5">{{ item.sub }}</p>
           </div>
         </div>
       {% endfor %}
@@ -39,91 +35,59 @@
 {% include 'components/categories.twig' %}
 
 {# ── 4. Featured Products ── #}
-<section class="py-16 lg:py-24 bg-brand-gray">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
-
+<section class="py-14 lg:py-20 bg-white" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
     <div class="flex items-end justify-between mb-10">
       <div>
-        <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-2">{{ 'الأكثر طلباً' | trans }}</p>
-        <h2 class="font-tajawal font-black text-white text-section">{{ 'الأكثر مبيعاً' | trans }}</h2>
-        <div class="w-12 h-0.5 bg-gold mt-3"></div>
+        <p class="text-gold text-sm tracking-[0.25em] uppercase mb-2" style="font-family: 'Cormorant Garamond', serif;">OUDSUDWAN</p>
+        <h2 class="text-2xl lg:text-3xl font-black text-gray-900">{{ trans('general.featured_title') }}</h2>
+        <div class="w-10 h-0.5 bg-gold mt-3"></div>
       </div>
-      <a href="{{ store.url }}/categories/best-sellers"
-        class="hidden sm:inline-flex items-center gap-2 text-gold hover:text-gold-light text-sm font-medium transition-colors duration-200">
-        {{ 'عرض الكل' | trans }}
-        <svg class="w-4 h-4 {{ store.direction == 'rtl' ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
+      <a href="{{ store.url }}/categories" class="hidden sm:flex items-center gap-1 text-gold hover:text-gold-dark text-sm font-medium transition-colors">
+        {{ trans('general.view_all') }}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
       </a>
     </div>
 
-    {# Products grid — Salla provides `products` variable on homepage or use featured products #}
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-      {% if products is defined and products|length > 0 %}
-        {% for product in products|slice(0, 8) %}
-          {% include 'components/product-card.twig' with { product: product } %}
+      {% if store.products is defined and store.products|length > 0 %}
+        {% for product in store.products|slice(0,8) %}
+          {% include 'components/product-card.twig' %}
         {% endfor %}
       {% else %}
-        {# Skeleton placeholders while loading #}
+        {# Skeleton while loading #}
         {% for i in 1..8 %}
-          <div class="bg-brand-gray rounded-lg overflow-hidden border border-white/5 animate-pulse">
-            <div class="aspect-square bg-white/5"></div>
+          <div class="bg-gray-100 rounded-xl overflow-hidden animate-pulse">
+            <div class="aspect-square bg-gray-200"></div>
             <div class="p-4 space-y-3">
-              <div class="h-3 bg-white/5 rounded w-3/4"></div>
-              <div class="h-3 bg-white/5 rounded w-1/2"></div>
-              <div class="h-8 bg-white/5 rounded mt-4"></div>
+              <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+              <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+              <div class="h-8 bg-gray-200 rounded mt-3"></div>
             </div>
           </div>
         {% endfor %}
       {% endif %}
     </div>
-
-    <div class="mt-8 text-center sm:hidden">
-      <a href="{{ store.url }}/categories/best-sellers"
-        class="inline-flex items-center gap-2 border border-gold/40 text-gold px-6 py-3 rounded hover:bg-gold hover:text-black transition-all duration-200 font-medium text-sm">
-        {{ 'عرض كل المنتجات' | trans }}
-      </a>
-    </div>
   </div>
 </section>
 
 {# ── 5. Featured Product Banner ── #}
-<section class="relative overflow-hidden bg-black py-0" style="min-height: 480px;">
-  {% if settings.featured_product_banner_image %}
-    <img src="{{ settings.featured_product_banner_image }}" alt="{{ 'منتج مميز' | trans }}"
-         class="absolute inset-0 w-full h-full object-cover opacity-40" />
-  {% else %}
-    <div class="absolute inset-0 bg-gradient-to-br from-dark-brown via-black to-black opacity-80"></div>
-    <div class="absolute inset-0 opacity-5"
-         style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 30px 30px;"></div>
-  {% endif %}
-  <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-
-  <div class="relative z-10 max-w-screen-xl2 mx-auto px-4 lg:px-8 py-20 flex items-center min-h-[480px]">
+<section class="relative py-0 overflow-hidden" style="min-height: 420px; background: #0a0a0a;">
+  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 28px 28px;"></div>
+  <div class="relative z-10 max-w-screen-xl2 mx-auto px-6 lg:px-16 py-16 flex items-center min-h-[420px]" style="font-family: 'Tajawal', sans-serif;">
     <div class="max-w-lg">
-      <span class="inline-block font-cormorant text-gold text-xs tracking-[0.4em] uppercase border border-gold/40 px-4 py-1.5 mb-6">
-        {{ 'المنتج المميز' | trans }}
+      <span class="inline-block text-gold text-xs tracking-[0.35em] uppercase border border-gold/40 px-4 py-1.5 rounded mb-6" style="font-family: 'Cormorant Garamond', serif;">
+        المنتج المميز
       </span>
-      <h2 class="font-tajawal font-black text-white mb-3" style="font-size: clamp(2rem, 4vw, 3.5rem);">
-        {{ 'زيت عود ملكي فيتنامي' | trans }}
-      </h2>
-      <p class="font-cormorant text-gold/80 text-lg italic mb-4">Vietnamese Royal Oud Oil</p>
-      <p class="text-ivory/60 text-sm leading-relaxed mb-8 max-w-sm">
-        {{ 'من أعمق غابات فيتنام، نقدم لكم زيت العود الملكي — رائحة تختلط فيها الأرض والخشب والأناقة في تناغم لا مثيل له.' | trans }}
-      </p>
-      <div class="flex items-center gap-4 mb-8">
-        <span class="font-tajawal font-black text-gold text-3xl">350</span>
-        <span class="text-ivory/60">{{ store.currency|default('ر.س') }}</span>
-        <span class="text-ivory/40 text-sm line-through">450 {{ store.currency|default('ر.س') }}</span>
-      </div>
+      <h2 class="text-white font-black mb-3" style="font-size: clamp(1.8rem, 3.5vw, 3rem);">زيت عود ملكي فيتنامي</h2>
+      <p class="text-gold/80 text-base italic mb-4" style="font-family: 'Cormorant Garamond', serif;">Vietnamese Royal Oud Oil</p>
+      <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm">من أعمق غابات فيتنام — رائحة ملكية أصيلة تجمع بين العمق الخشبي والأناقة الشرقية.</p>
       <div class="flex items-center gap-4">
-        <a href="{{ store.url }}/products/royal-oud-oil"
-          class="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-black font-tajawal font-bold px-8 py-4 rounded transition-all duration-300 shadow-gold hover:shadow-gold-lg">
-          {{ 'اشترِ الآن' | trans }}
+        <a href="{{ store.url }}/products" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-black font-bold px-8 py-4 rounded transition-all duration-300 shadow-gold">
+          {{ trans('general.shop_now') }}
         </a>
-        <a href="{{ store.url }}/products/royal-oud-oil"
-          class="inline-flex items-center gap-2 border border-white/30 hover:border-gold text-ivory hover:text-gold px-6 py-4 rounded transition-all duration-300">
-          {{ 'التفاصيل' | trans }}
+        <a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}" target="_blank" rel="noopener" class="border border-white/30 hover:border-gold text-white hover:text-gold px-6 py-4 rounded transition-all duration-300 text-sm font-medium">
+          {{ trans('general.whatsapp_order') }}
         </a>
       </div>
     </div>
@@ -131,69 +95,39 @@
 </section>
 
 {# ── 6. Brand Story ── #}
-<section class="py-16 lg:py-24 bg-brand-gray">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
+<section class="py-14 lg:py-24 bg-white" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-      {# Image side #}
       <div class="relative order-2 lg:order-1">
-        <div class="relative rounded-xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:max-w-none">
-          {% if settings.about_image %}
-            <img src="{{ settings.about_image }}" alt="{{ 'قصة سدوان للعود' | trans }}"
-                 class="w-full h-full object-cover" />
-          {% else %}
-            <div class="w-full h-full bg-gradient-to-br from-dark-brown to-black flex items-center justify-center">
-              <div class="text-center text-gold/30">
-                <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                <p class="font-cormorant text-lg">Brand Story Image</p>
-              </div>
-            </div>
-          {% endif %}
-        </div>
-        {# Decorative elements #}
-        <div class="absolute -bottom-4 -start-4 w-24 h-24 border-2 border-gold/20 rounded-xl -z-10"></div>
-        <div class="absolute -top-4 -end-4 w-16 h-16 bg-gold/10 rounded-xl -z-10"></div>
-        <div class="absolute bottom-6 end-6 bg-black/80 backdrop-blur-sm border border-gold/30 rounded-lg px-4 py-3">
-          <p class="font-tajawal font-bold text-gold text-2xl">10+</p>
-          <p class="text-ivory/60 text-xs">{{ 'سنوات من الخبرة' | trans }}</p>
+        {% if settings.about_image %}
+          <img src="{{ settings.about_image }}" alt="{{ trans('general.brand_story_title') }}" class="w-full rounded-2xl object-cover aspect-[4/5]" loading="lazy" />
+        {% else %}
+          <div class="w-full rounded-2xl bg-gradient-to-br from-dark-brown to-gray-900 aspect-[4/5] flex items-center justify-center">
+            <p class="text-gold/40" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">Brand Story Image</p>
+          </div>
+        {% endif %}
+        <div class="absolute bottom-6 end-6 bg-white/95 backdrop-blur border border-gold/20 rounded-xl px-5 py-4 shadow-lg">
+          <p class="text-gold font-black text-3xl">10+</p>
+          <p class="text-gray-500 text-xs mt-0.5">سنوات من الخبرة</p>
         </div>
       </div>
-
-      {# Text side #}
       <div class="order-1 lg:order-2">
-        <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-3">{{ 'قصتنا' | trans }}</p>
-        <h2 class="font-tajawal font-black text-white mb-4" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);">
-          {{ 'رحلة من أعماق غابات فيتنام' | trans }}
-        </h2>
-        <div class="w-12 h-0.5 bg-gold mb-6"></div>
-        <p class="text-ivory/70 text-sm lg:text-base leading-relaxed mb-4">
-          {{ 'في سدوان للعود، نؤمن بأن العطر الحقيقي يبدأ من الجذور. نختار بعناية فائقة أفضل أخشاب العود الفيتنامي من غابات هانوي ومناطق الجنوب، حيث تنمو شجرة العود في مناخها الطبيعي المثالي.' | trans }}
-        </p>
-        <p class="text-ivory/70 text-sm lg:text-base leading-relaxed mb-8">
-          {{ 'كل قطرة من زيوتنا وكل شريحة من عودنا تحكي قصة أرض غنية، وحرفيين ماهرين، وشغف لا ينتهي بتقديم الأفضل لكم.' | trans }}
-        </p>
-
+        <p class="text-gold text-sm tracking-[0.25em] uppercase mb-3" style="font-family: 'Cormorant Garamond', serif;">قصتنا</p>
+        <h2 class="text-2xl lg:text-4xl font-black text-gray-900 mb-4">{{ trans('general.brand_story_title') }}</h2>
+        <div class="w-10 h-0.5 bg-gold mb-6"></div>
+        <p class="text-gray-600 leading-relaxed mb-5 text-sm lg:text-base">{{ trans('general.brand_story_text') }}</p>
+        <p class="text-gray-600 leading-relaxed mb-8 text-sm lg:text-base">كل قطرة من زيوتنا وكل شريحة من عودنا تحكي قصة أرض غنية، وشغف لا ينتهي بتقديم الأفضل لكم.</p>
         <div class="grid grid-cols-3 gap-4 mb-8">
-          {% for stat in [
-            { num: '50+', label: 'منتج فاخر' },
-            { num: '10K+', label: 'عميل سعيد' },
-            { num: '100%', label: 'طبيعي خالص' }
-          ] %}
-            <div class="text-center py-4 border border-gold/15 rounded-lg bg-black/30">
-              <p class="font-tajawal font-black text-gold text-2xl mb-1">{{ stat.num }}</p>
-              <p class="text-ivory/50 text-xs">{{ stat.label | trans }}</p>
+          {% for s in [{ n: '50+', l: 'منتج' }, { n: '10K+', l: 'عميل' }, { n: '100%', l: 'طبيعي' }] %}
+            <div class="text-center py-4 border border-gray-100 rounded-xl">
+              <p class="text-gold font-black text-2xl">{{ s.n }}</p>
+              <p class="text-gray-400 text-xs mt-1">{{ s.l }}</p>
             </div>
           {% endfor %}
         </div>
-
-        <a href="{{ store.url }}/pages/our-story"
-          class="inline-flex items-center gap-2 bg-transparent border border-gold text-gold hover:bg-gold hover:text-black font-tajawal font-semibold px-7 py-3.5 rounded transition-all duration-300">
-          {{ 'اقرأ قصتنا' | trans }}
-          <svg class="w-4 h-4 {{ store.direction == 'rtl' ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
+        <a href="{{ store.url }}/pages/our-story" class="inline-flex items-center gap-2 border border-gold text-gold hover:bg-gold hover:text-black font-semibold px-7 py-3.5 rounded transition-all duration-300">
+          {{ trans('general.learn_more') }}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         </a>
       </div>
     </div>
@@ -201,40 +135,29 @@
 </section>
 
 {# ── 7. Testimonials ── #}
-<section class="py-16 lg:py-24 bg-black">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
-    <div class="text-center mb-12">
-      <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-3">{{ 'آراء عملائنا' | trans }}</p>
-      <h2 class="font-tajawal font-black text-white text-section mb-4">{{ 'ماذا يقولون عنا' | trans }}</h2>
-      <div class="w-16 h-0.5 bg-gold mx-auto"></div>
+<section class="py-14 lg:py-20 bg-gray-50" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
+    <div class="text-center mb-10">
+      <p class="text-gold text-sm tracking-[0.25em] uppercase mb-2" style="font-family: 'Cormorant Garamond', serif;">آراء عملائنا</p>
+      <h2 class="text-2xl lg:text-3xl font-black text-gray-900">{{ trans('general.testimonials_title') }}</h2>
+      <div class="w-10 h-0.5 bg-gold mx-auto mt-3"></div>
     </div>
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {% set testimonials = [
-        { name: 'محمد العتيبي', city: 'الرياض', rating: 5, text: 'من أجود زيوت العود التي تذوقتها. الرائحة عميقة وأصيلة وتدوم طويلاً. سدوان للعود تستحق كل التقدير.' },
-        { name: 'فيصل الشمري', city: 'جدة', rating: 5, text: 'شرائح العود الفيتنامي ممتازة جداً، الدخان كثيف والرائحة تملأ الغرفة. سأعيد الطلب حتماً.' },
-        { name: 'عبدالله القحطاني', city: 'الدمام', rating: 5, text: 'التغليف فاخر جداً وجعل هديتي مميزة. خدمة العملاء سريعة الرد ومحترفة. شكراً سدوان.' }
+      {% for t in [
+        { name: 'محمد العتيبي', city: 'الرياض', text: 'من أجود زيوت العود التي تذوقتها. الرائحة عميقة وأصيلة وتدوم طويلاً. سدوان تستحق كل التقدير.', stars: 5 },
+        { name: 'فيصل الشمري', city: 'جدة',    text: 'شرائح العود الفيتنامي ممتازة جداً، الدخان كثيف والرائحة تملأ الغرفة. سأعيد الطلب حتماً.', stars: 5 },
+        { name: 'عبدالله القحطاني', city: 'الدمام', text: 'التغليف فاخر جداً وجعل هديتي مميزة. خدمة العملاء سريعة الرد ومحترفة.', stars: 5 }
       ] %}
-      {% for t in testimonials %}
-        <div class="bg-brand-gray border border-white/8 hover:border-gold/25 rounded-xl p-6 lg:p-8 transition-all duration-300">
-          {# Stars #}
-          <div class="flex gap-1 mb-4">
-            {% for i in 1..t.rating %}
-              <svg class="w-4 h-4 text-gold" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            {% endfor %}
+        <div class="bg-white border border-gray-100 hover:border-gold/30 rounded-2xl p-6 lg:p-8 transition-all duration-300 hover:shadow-card">
+          <div class="flex gap-0.5 mb-4">
+            {% for i in 1..t.stars %}<svg class="w-4 h-4 text-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>{% endfor %}
           </div>
-          {# Quote mark #}
-          <div class="font-cormorant text-gold/30 text-5xl leading-none mb-2 select-none">"</div>
-          <p class="text-ivory/70 text-sm leading-relaxed mb-6">{{ t.text }}</p>
-          <div class="flex items-center gap-3 border-t border-white/8 pt-4">
-            <div class="w-9 h-9 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-sm">
-              {{ t.name|slice(0, 1) }}
-            </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6">"{{ t.text }}"</p>
+          <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+            <div class="w-9 h-9 rounded-full bg-gold/15 flex items-center justify-center text-gold font-bold text-sm">{{ t.name|slice(0,1) }}</div>
             <div>
-              <p class="text-ivory font-semibold text-sm">{{ t.name }}</p>
-              <p class="text-ivory/40 text-xs">{{ t.city }}</p>
+              <p class="text-gray-900 font-semibold text-sm">{{ t.name }}</p>
+              <p class="text-gray-400 text-xs">{{ t.city }}</p>
             </div>
           </div>
         </div>
@@ -243,41 +166,31 @@
   </div>
 </section>
 
-{# ── 8. WhatsApp CTA Banner ── #}
-<section class="py-16 bg-dark-brown relative overflow-hidden">
-  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 24px 24px;"></div>
-  <div class="relative z-10 max-w-screen-xl2 mx-auto px-4 lg:px-8 text-center">
+{# ── 8. WhatsApp CTA ── #}
+<section class="py-14 bg-dark-brown relative overflow-hidden" style="font-family: 'Tajawal', sans-serif;">
+  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #C9A24A 1px, transparent 0); background-size: 22px 22px;"></div>
+  <div class="relative z-10 max-w-screen-xl2 mx-auto px-4 text-center">
     <div class="w-14 h-14 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center mx-auto mb-5">
-      <svg class="w-7 h-7 text-green-400" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
+      <svg class="w-7 h-7 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a8.073 8.073 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.861 9.861 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </div>
-    <h2 class="font-tajawal font-black text-white text-section mb-3">{{ 'تواصل مع خبير العود' | trans }}</h2>
-    <p class="font-cormorant text-gold/70 text-lg italic mb-2">Talk to Our Oud Expert</p>
-    <p class="text-ivory/60 text-sm max-w-md mx-auto mb-8">
-      {{ 'هل تبحث عن توصية شخصية؟ فريقنا من خبراء العود جاهز لمساعدتك في اختيار المنتج المثالي.' | trans }}
-    </p>
-    <a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}?text={{ 'مرحباً، أريد الاستفسار عن منتجات العود' | url_encode }}"
-       target="_blank" rel="noopener noreferrer"
-       class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-tajawal font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      {{ 'ابدأ المحادثة الآن' | trans }}
+    <h2 class="text-white font-black text-2xl lg:text-3xl mb-3">{{ trans('general.contact_expert') }}</h2>
+    <p class="text-gray-300 text-sm max-w-md mx-auto mb-8">هل تبحث عن توصية شخصية؟ فريقنا من خبراء العود جاهز لمساعدتك في اختيار المنتج المثالي.</p>
+    <a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}"
+       target="_blank" rel="noopener"
+       class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a8.073 8.073 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.861 9.861 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      {{ trans('general.chat_now') }}
     </a>
   </div>
 </section>
 
 {# ── 9. Newsletter ── #}
-<section class="py-16 bg-brand-gray border-y border-gold/10">
-  <div class="max-w-screen-xl2 mx-auto px-4 lg:px-8">
-    <div class="max-w-2xl mx-auto text-center">
-      <p class="font-cormorant text-gold/70 text-sm tracking-[0.3em] uppercase mb-3">{{ 'كن أول من يعلم' | trans }}</p>
-      <h2 class="font-tajawal font-bold text-white text-2xl lg:text-3xl mb-3">{{ 'اشترك في نشرتنا البريدية' | trans }}</h2>
-      <p class="text-ivory/50 text-sm mb-6">{{ 'احصل على أحدث العروض ووصفات العطور الحصرية مباشرة إلى بريدك.' | trans }}</p>
-
-      <salla-newsletter class="w-full"></salla-newsletter>
-    </div>
+<section class="py-14 bg-white border-t border-gray-100" style="font-family: 'Tajawal', sans-serif;">
+  <div class="max-w-2xl mx-auto px-4 text-center">
+    <p class="text-gold text-sm tracking-[0.25em] uppercase mb-3" style="font-family: 'Cormorant Garamond', serif;">Newsletter</p>
+    <h2 class="text-2xl lg:text-3xl font-black text-gray-900 mb-2">{{ trans('general.newsletter_title') }}</h2>
+    <p class="text-gray-500 text-sm mb-7">{{ trans('general.newsletter_subtitle') }}</p>
+    <salla-newsletter class="w-full max-w-md mx-auto"></salla-newsletter>
   </div>
 </section>
 
