@@ -33,7 +33,7 @@
     "whatsapp_support": "دعم واتساب",
     "whatsapp_support_sub": "استشارة مجانية",
     "view_all": "عرض الكل",
-    "explore": "استكشف",
+    "explore": "اكتشف",
     "shop_now": "تسوق الآن",
     "learn_more": "اعرف المزيد",
     "from_price": "من",
@@ -56,6 +56,15 @@
     "featured_title": "الأكثر مبيعاً",
     "categories_title": "تسوق حسب الفئة",
     "trust_title": "لماذا سدوان للعود؟",
-    "announcement": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
+    "announcement": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR",
+    "hero_title_1": "حضورٌ لا يُنسى",
+    "hero_subtitle_1": "زيت العود الأحمر — النسخة الخاصة",
+    "hero_cta_1": "اكتشف الآن",
+    "hero_title_2": "شرائح العود الملكي",
+    "hero_subtitle_2": "عبق يملأ المجلس ساعات",
+    "hero_cta_2": "تسوق الآن",
+    "hero_title_3": "هدية لا تُنسى",
+    "hero_subtitle_3": "مجموعات هدايا فاخرة بتغليف أسود راقٍ",
+    "hero_cta_3": "اكتشف المجموعات"
   }
 }
