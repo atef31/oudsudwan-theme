@@ -4,10 +4,10 @@
   "description": "OUDSUDWAN — Luxury Oud eCommerce Salla Twilight Theme",
   "private": true,
   "scripts": {
-    "build": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/css/app.css --minify && node -e \"require('fs').mkdirSync('dist/js',{recursive:true});require('fs').copyFileSync('src/assets/js/app.js','dist/js/app.js')\"",
-    "development": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/css/app.css --watch",
-    "watch": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/css/app.css --watch",
-    "dev": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/css/app.css --watch",
+    "build": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/app.css --minify && node -e \"require('fs').copyFileSync('src/assets/js/app.js','dist/app.js')\"",
+    "development": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/app.css --watch",
+    "watch": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/app.css --watch",
+    "dev": "npx tailwindcss -i ./src/assets/css/app.css -o ./dist/app.css --watch",
     "preview": "node preview/serve.js"
   },
   "devDependencies": {
