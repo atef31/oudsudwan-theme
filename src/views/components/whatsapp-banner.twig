@@ -21,7 +21,7 @@
 
       {# CTA #}
       <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-        <a href="https://wa.me/{{ settings.whatsapp_number ?? '966XXXXXXXXX' }}"
+        <a href="https://wa.me/{{ theme.settings.get('whatsapp_number', '966XXXXXXXXX') ?? '966XXXXXXXXX' }}"
            target="_blank" rel="noopener noreferrer"
            class="inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl text-sm">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">

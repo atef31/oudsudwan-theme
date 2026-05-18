@@ -4,8 +4,8 @@
 
       {# Image #}
       <div class="relative order-2 lg:order-1">
-        {% if settings.about_image %}
-          <img src="{{ settings.about_image }}"
+        {% if theme.settings.get('about_image', '') %}
+          <img src="{{ theme.settings.get('about_image', '') }}"
                alt="{{ trans('general.brand_story_title') }}"
                loading="lazy"
                class="w-full rounded-2xl object-cover aspect-[4/5]">

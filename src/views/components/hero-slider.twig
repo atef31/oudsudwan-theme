@@ -2,9 +2,9 @@
 
   <div id="slides-track" class="flex h-full transition-transform duration-700 ease-in-out">
     {% set slides = [
-      { image: settings.hero_slide_1_image, title: settings.hero_slide_1_title|default('عود فيتنامي أصيل'), sub: 'Authentic Vietnamese Oud', href: store.url ~ '/categories' },
-      { image: settings.hero_slide_2_image, title: settings.hero_slide_2_title|default('زيوت العود الفاخرة'), sub: 'Premium Oud Oils Collection', href: store.url ~ '/categories/oud-oil' },
-      { image: settings.hero_slide_3_image, title: settings.hero_slide_3_title|default('مجموعات الهدايا الملكية'), sub: 'Royal Gift Collections', href: store.url ~ '/categories/gift-sets' }
+      { image: theme.settings.get('hero_slide_1_image', ''), title: theme.settings.get('hero_slide_1_title', '')|default('عود فيتنامي أصيل'), sub: 'Authentic Vietnamese Oud', href: store.url ~ '/categories' },
+      { image: theme.settings.get('hero_slide_2_image', ''), title: theme.settings.get('hero_slide_2_title', '')|default('زيوت العود الفاخرة'), sub: 'Premium Oud Oils Collection', href: store.url ~ '/categories/oud-oil' },
+      { image: theme.settings.get('hero_slide_3_image', ''), title: theme.settings.get('hero_slide_3_title', '')|default('مجموعات الهدايا الملكية'), sub: 'Royal Gift Collections', href: store.url ~ '/categories/gift-sets' }
     ] %}
 
     {% for slide in slides %}

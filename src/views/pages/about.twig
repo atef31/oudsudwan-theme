@@ -16,8 +16,8 @@
   <div class="max-w-screen-xl2 mx-auto px-4 lg:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
       <div class="relative">
-        {% if settings.about_image %}
-          <img src="{{ settings.about_image }}" alt="{{ store.name }}" class="w-full rounded-2xl object-cover aspect-[4/5]" loading="lazy" />
+        {% if theme.settings.get('about_image', '') %}
+          <img src="{{ theme.settings.get('about_image', '') }}" alt="{{ store.name }}" class="w-full rounded-2xl object-cover aspect-[4/5]" loading="lazy" />
         {% else %}
           <div class="w-full rounded-2xl bg-gradient-to-br from-dark-brown to-gray-900 aspect-[4/5] flex items-center justify-center">
             <p class="text-gold/40 text-xl" style="font-family: 'Cormorant Garamond', serif;">Brand Story Image</p>
@@ -71,7 +71,7 @@
     <p class="text-gray-500 text-sm mb-7">اكتشف مجموعتنا أو تواصل مع خبرائنا للحصول على توصية شخصية.</p>
     <div class="flex flex-wrap justify-center gap-4">
       <a href="{{ store.url }}/categories" class="bg-gold hover:bg-gold-dark text-black font-bold px-7 py-3.5 rounded-xl transition-all duration-300">{{ trans('general.shop_now') }}</a>
-      <a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}" target="_blank" rel="noopener" class="border border-gold text-gold hover:bg-gold hover:text-black px-7 py-3.5 rounded-xl transition-all duration-300 font-medium">{{ trans('general.contact_expert') }}</a>
+      <a href="https://wa.me/{{ theme.settings.get('whatsapp_number', '966XXXXXXXXX')|default('966XXXXXXXXX') }}" target="_blank" rel="noopener" class="border border-gold text-gold hover:bg-gold hover:text-black px-7 py-3.5 rounded-xl transition-all duration-300 font-medium">{{ trans('general.contact_expert') }}</a>
     </div>
   </div>
 </section>

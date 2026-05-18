@@ -1,6 +1,6 @@
 <div id="announcement-bar" class="bg-gold text-black text-center text-sm font-medium py-2.5 px-4 relative" style="font-family: 'Tajawal', sans-serif;">
   <span class="tracking-wide">
-    {{ settings.announcement_text|default(trans('general.announcement')) }}
+    {{ theme.settings.get('announcement_text', '')|default(trans('general.announcement')) }}
   </span>
   <button onclick="document.getElementById('announcement-bar').remove(); sessionStorage.setItem('ann_closed','1')"
           class="absolute top-1/2 -translate-y-1/2 end-4 text-black/60 hover:text-black transition-colors"

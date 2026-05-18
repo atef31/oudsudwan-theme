@@ -1,70 +1,179 @@
 {
-  "name": "OUDSUDWAN",
-  "description": "Luxury Vietnamese Oud Store",
-  "version": "1.0.0",
-  "author": "OUDSUDWAN",
-  "theme_id": 1018760024,
-  "features": [
-    "slider",
-    "category",
-    "products",
-    "brand",
-    "newsletter"
-  ],
-  "components": [
-    {
-      "name": "Hero Slider",
-      "path": "components/hero-slider"
+    "name": {
+        "ar": "سدوان للعود",
+        "en": "OUDSUDWAN"
     },
-    {
-      "name": "Categories",
-      "path": "components/categories"
+    "description": {
+        "ar": "متجر عود فيتنامي فاخر",
+        "en": "Luxury Vietnamese Oud Store"
     },
-    {
-      "name": "Featured Products",
-      "path": "components/featured-products"
-    },
-    {
-      "name": "Brand Story",
-      "path": "components/brand-story"
-    },
-    {
-      "name": "Newsletter",
-      "path": "components/newsletter"
-    },
-    {
-      "name": "WhatsApp Banner",
-      "path": "components/whatsapp-banner"
-    },
-    {
-      "name": "Testimonials",
-      "path": "components/testimonials"
-    }
-  ],
-  "settings": {
-    "whatsapp_number": {
-      "type": "text",
-      "label": {
-        "ar": "رقم الواتساب",
-        "en": "WhatsApp Number"
-      },
-      "default": "966XXXXXXXXX"
-    },
-    "show_announcement": {
-      "type": "toggle",
-      "label": {
-        "ar": "إظهار شريط الإعلانات",
-        "en": "Show Announcement Bar"
-      },
-      "default": true
-    },
-    "announcement_text": {
-      "type": "text",
-      "label": {
-        "ar": "نص الإعلان",
-        "en": "Announcement Text"
-      },
-      "default": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
-    }
-  }
+    "version": "1.0.0",
+    "author": "OUDSUDWAN",
+    "author_email": "atefma65@gmail.com",
+    "repository": "https://github.com/atef31/oudsudwan-theme",
+    "theme_id": 1018760024,
+    "features": [
+        "color",
+        "fonts",
+        "breadcrumb"
+    ],
+    "settings": [
+        {
+            "id": "whatsapp_number",
+            "type": "string",
+            "format": "text",
+            "label": "WhatsApp Number",
+            "description": "Enter the WhatsApp number with country code",
+            "icon": "sicon-whatsapp",
+            "required": false,
+            "value": "966XXXXXXXXX"
+        },
+        {
+            "id": "show_announcement",
+            "type": "boolean",
+            "format": "switch",
+            "label": "Show Announcement Bar",
+            "description": null,
+            "icon": "sicon-toggle-off",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "announcement_text",
+            "type": "string",
+            "format": "text",
+            "label": "Announcement Bar Text",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "required": false,
+            "value": "شحن مجاني للطلبات فوق 300 ريال | Free shipping over 300 SAR"
+        }
+    ],
+    "components": [
+        {
+            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "title": {
+                "ar": "السلايدر الرئيسي",
+                "en": "Hero Slider"
+            },
+            "icon": "sicon-image-carousel",
+            "path": "components.hero-slider",
+            "image": "",
+            "fields": [
+                {
+                    "id": "slide_1_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "Slide 1 Title",
+                    "multilanguage": true,
+                    "required": false,
+                    "value": null
+                },
+                {
+                    "id": "slide_1_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "Slide 1 Image",
+                    "required": false,
+                    "value": null
+                }
+            ]
+        },
+        {
+            "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+            "title": {
+                "ar": "الفئات",
+                "en": "Categories"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "components.categories",
+            "image": "",
+            "fields": [
+                {
+                    "id": "section_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "Section Title",
+                    "multilanguage": true,
+                    "required": false,
+                    "value": null
+                }
+            ]
+        },
+        {
+            "key": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+            "title": {
+                "ar": "المنتجات المميزة",
+                "en": "Featured Products"
+            },
+            "icon": "sicon-products",
+            "path": "components.featured-products",
+            "image": "",
+            "fields": [
+                {
+                    "id": "section_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "Section Title",
+                    "multilanguage": true,
+                    "required": false,
+                    "value": null
+                }
+            ]
+        },
+        {
+            "key": "d4e5f6a7-b8c9-0123-defa-234567890123",
+            "title": {
+                "ar": "قصة العلامة التجارية",
+                "en": "Brand Story"
+            },
+            "icon": "sicon-book-open",
+            "path": "components.brand-story",
+            "image": "",
+            "fields": [
+                {
+                    "id": "story_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "Story Image",
+                    "required": false,
+                    "value": null
+                }
+            ]
+        },
+        {
+            "key": "e5f6a7b8-c9d0-1234-efab-345678901234",
+            "title": {
+                "ar": "آراء العملاء",
+                "en": "Testimonials"
+            },
+            "icon": "sicon-chat-bubbles",
+            "path": "components.testimonials",
+            "image": "",
+            "fields": []
+        },
+        {
+            "key": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+            "title": {
+                "ar": "بانر واتساب",
+                "en": "WhatsApp Banner"
+            },
+            "icon": "sicon-whatsapp",
+            "path": "components.whatsapp-banner",
+            "image": "",
+            "fields": []
+        },
+        {
+            "key": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+            "title": {
+                "ar": "النشرة البريدية",
+                "en": "Newsletter"
+            },
+            "icon": "sicon-inbox-full",
+            "path": "components.newsletter",
+            "image": "",
+            "fields": []
+        }
+    ]
 }

@@ -1,4 +1,4 @@
-<a href="https://wa.me/{{ settings.whatsapp_number|default('966XXXXXXXXX') }}?text={{ trans('general.whatsapp_order') | url_encode }}"
+<a href="https://wa.me/{{ theme.settings.get('whatsapp_number', '966XXXXXXXXX')|default('966XXXXXXXXX') }}?text={{ trans('general.whatsapp_order') | url_encode }}"
    target="_blank" rel="noopener noreferrer"
    aria-label="{{ trans('general.whatsapp_cta') }}"
    class="fixed bottom-6 start-6 z-50 group flex items-center gap-3">
